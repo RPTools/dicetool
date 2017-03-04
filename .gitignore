@@ -1,0 +1,6 @@
+.idea/
+.gradle/
+.settings
+.classpath
+build/
+src/main/java/net/rptools/dicetool/dicetool/

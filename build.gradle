@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+apply plugin: 'findbugs'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url = 'http://maptool.craigs-stuff.net/repo/'
+    }
+}
+
+dependencies {
+    compile 'net.rptools.rplib:rplib:1.4.1.4'
+    compile 'net.rptools.dicelib:dicelib:1.4.0.1'
+    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.3.1'
+    testCompile 'rhino:js:1.6R2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+}
+
+version='1.4.0'
+project.version = version
+
+install {
+    repositories.mavenInstaller {
+        pom.version = project.version
+        pom.artifactId = 'dicetool'
+        pom.groupId = 'net.rptools'
+    }
+}
+
+mainClassName = 'net.rptools.dicetool.DiceTool'
+
