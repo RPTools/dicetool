@@ -1,7 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'application'
-apply plugin: 'findbugs'
+//apply plugin: 'findbugs'  -- findbugs does not work with java version 9
+
 
 repositories {
     mavenCentral()
