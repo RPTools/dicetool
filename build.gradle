@@ -1,27 +1,66 @@
+buildscript {
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.26.1"
+    }
+    repositories {
+        mavenCentral()
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'application'
 //apply plugin: 'findbugs'  -- findbugs does not work with java version 9
-
+apply plugin: 'com.diffplug.gradle.spotless'
 
 repositories {
-    mavenCentral()
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
     mavenLocal()
-    maven {
-        url = 'http://maptool.craigs-stuff.net/repo/'
-    }
+    mavenCentral()
+    jcenter()
+    maven { url = 'http://maptool.craigs-stuff.net/repo/' }
+    maven { url = 'http://www.nerps.net/repo/' }
+    maven { url = 'https://jitpack.io' }
 }
 
 dependencies {
-    compile 'net.rptools.rplib:rplib:1.4.1.4'
-    compile 'net.rptools.dicelib:dicelib:1.4.0.1'
-    compile group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.3.1'
     testCompile 'rhino:js:1.6R2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
+    implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
+    implementation 'net.rptools.rplib:rplib:1.4.1.7'
+    implementation 'com.github.RPTools:parser:1.8.2'
+    implementation 'com.github.RPTools:dicelib:1.6.6'
 }
 
-version='1.4.0'
+spotless {
+    java {
+        licenseHeaderFile 'spotless.license.java'
+        // Now using the Google Java style guide
+        //eclipse().configFile('build-resources/eclipse.prefs.formatter.xml')
+        googleJavaFormat()
+        // If you get exceptions thrown by spotlessApply, this might
+        // help.  Enable it here if the problem is with a Java file, and
+        // below if it is not.  Don't leave it enabled, as nothing will
+        // actually be updated if you do.
+        // https://github.com/diffplug/spotless/blob/master/PADDEDCELL.md
+        //paddedCell()
+    }
+
+    format 'misc', {
+        target '**/*.gradle', '**/.gitignore'
+
+        // spotless has built-in rules for most basic formatting tasks
+        trimTrailingWhitespace()
+        // or spaces. Takes an integer argument if you don't like 4
+        indentWithSpaces(4)
+        //paddedCell()
+    }
+}
+
+
+version='1.4.1'
 project.version = version
 
 install {

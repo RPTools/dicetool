@@ -22,9 +22,3 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.rptools.dicetool.ui;
-
-import javax.swing.*;
-
-/** Created by smaudet on 3/4/17. */
-public class SettingsWindow extends JWindow {}
