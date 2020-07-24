@@ -1,6 +1,23 @@
-.idea/
-.gradle/
-.settings
-.classpath
+# OS generated files
+################################################################################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Others
+################################################################################
+.gradle
 build/
-src/main/java/net/rptools/dicetool/dicetool/
+/bin/
+target/
+out/
+/releases/
+*.log
+*~
+\${sys:appHome}/
+/.idea
