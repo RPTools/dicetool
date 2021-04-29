@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: com.thoughtworks.xstream:xstream
+    versions:
+    - 1.4.15
+  - dependency-name: junit:junit
+    versions:
+    - 4.13.1
